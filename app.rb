@@ -12,3 +12,9 @@ get('/') do
   @page_title = "home"
   erb(:index)
 end
+
+get("/admin")j do
+  @page_title = "admin"
+  @stylists = Stylist.all()
+  erb(:admin)
+end
