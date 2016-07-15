@@ -7,3 +7,8 @@ require('./lib/stylist')
 also_reload('lib/**/*.rb')
 
 DB = PG.connect({:name => 'hair_salon'})
+
+get('/') do
+  @page_title = "home"
+  erb(:index)
+end
