@@ -3,26 +3,26 @@ require('spec_helper')
 describe(Client) do
 
   describe(".all") do
-    it('is an empty array at first') do
+    it("is an empty array at first") do
       expect(Client.all()).to(eq([]))
     end
   end
 
   describe("#id") do
-    it('returns the id of a Client') do
+    it("returns the id of a Stylist") do
       client = Client.new({:id => 1, :name => "Mike", :stylist_id => 1})
       expect(client.id()).to(eq(1))
     end
   end
 
   describe('#name') do
-    it('returns a Client name') do
+    it("returns a Stylist name") do
       client = Client.new({:id => nil, :name => "Mike", :stylist_id => 1})
       expect(client.name()).to(eq("Mike"))
     end
   end
 
-  describe('#stylist_id') do
+  describe("#stylist_id") do
     it 'lets you read the stylist id of a client' do
       client = Client.new({:id => nil, :name => "Mike", :stylist_id => 1})
       expect(client.stylist_id()).to(eq(1))
@@ -30,7 +30,7 @@ describe(Client) do
   end
 
   describe('#save') do
-    it('saves a client to the database') do
+    it("saves a client to the database") do
       client = Client.new({:id => nil, :name => "Mike", :stylist_id => 1})
       client.save()
       expect(Client.all()).to(eq([client]))

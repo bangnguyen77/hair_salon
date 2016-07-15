@@ -28,7 +28,6 @@ class Client
     self.id().==(another_client.id()).&(self.name().==(another_client.name()))
   end
 
-
   define_singleton_method(:find) do |id|
     client_single = DB.exec("SELECT * FROM clients WHERE id = #{id} limit 1;")
     found_client = nil
