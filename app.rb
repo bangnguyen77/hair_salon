@@ -6,15 +6,23 @@ require('./lib/stylist')
 
 also_reload('lib/**/*.rb')
 
-# DB = PG.connect({:name => 'hair_salon'})
+DB = PG.connect({:dbname => "hair_salon"})
 
-# get('/') do
-#   @page_title = "home"
-#   erb(:index)
-# end
-#
-# get("/admin")j do
-#   @page_title = "admin"
-#   @stylists = Stylist.all()
-#   erb(:admin)
-# end
+get('/') do
+  @page_title = "home"
+  erb(:index)
+end
+
+get("/stylists") do
+  @page_title = "stylists"
+  @stylists = Stylist.all()
+  erb(:stylists)
+end
+
+post("/stylists") do
+  name = params.fetch("name")
+  stylist = Stylist.new({:id => nil, :name => name})
+  stylist.save()
+  @stylists = Stylist.all()
+  erb(:stylists)
+end
