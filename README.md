@@ -11,12 +11,15 @@ This is a web app that allows the owner to:
 ** update information of clients
 
 ## Setup/Installation Requirements
-
-** open the project folder in the terminal;
-** run "postgres" in the terminal;
-** open "psql" in the terminal;
-** CREATE DATABASE hair_salon, CREATE TABLE stylists, CREATE clients in the terminal;
-** run "ruby app.rb" in the terminal;
+In the terminal:
+** open the project folder;
+** type "postgres";
+** type "psql" and then type the followings;
+  *** CREATE DATABASE hair_salon;
+  *** \c hair_salon ;
+  *** CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
+  *** CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylist_id int);
+** run "ruby app.rb";
 ** visit http://localhost:4567 in the browser;
 
 
