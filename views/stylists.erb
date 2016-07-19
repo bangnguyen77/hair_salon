@@ -1,8 +1,25 @@
 <div class="container">
-  <h1>List of Stylists</h1>
-  <h3>Add a new stylist:</h3>
-  <form class="" action="/stylists" method="post">
-    <label for="name">Stylist name:</label>
-    <input type="text" name="name" id="name">
-    <button type="submit"">Add a Stylist</button>
-  </form>
+  <% if @stylists.any?() %>
+    <h3>List of Stylists</h3>
+    <ul>
+      <% @stylists.each() do |stylist| %>
+        <li><a href="/stylists/<%= stylist.id() %>"><%= stylist.name() %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>
+      The list currently has no stylists.
+    </p>
+  <% end %>
+
+    <h3>Add a new stylist:</h3>
+    <form class="" action="/stylists" method="post">
+      <label for="name">Stylist name:</label>
+      <input type="text" name="name" id="name">
+      <button type="submit">Add a Stylist</button>
+    </form>
+</div>
+
+<div class="">
+  <a href="/">Back to homepage</a>
+</div>

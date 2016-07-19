@@ -8,13 +8,12 @@ also_reload('lib/**/*.rb')
 
 DB = PG.connect({:dbname => "hair_salon"})
 
-get('/') do
-  @page_title = "home"
+get("/") do
+  @stylists = Stylist.all()
   erb(:index)
 end
 
 get("/stylists") do
-  @page_title = "stylists"
   @stylists = Stylist.all()
   erb(:stylists)
 end
@@ -25,4 +24,9 @@ post("/stylists") do
   stylist.save()
   @stylists = Stylist.all()
   erb(:stylists)
+end
+
+get("/stylists/:id") do
+  @stylist = Stylist.find(params.fetch("id").to_i())
+  erb(:stylist)
 end
