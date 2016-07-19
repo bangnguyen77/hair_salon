@@ -8,8 +8,38 @@
   <button type="submit">Update</button>
 </form>
 
-<h1>Delete This Stylist</h1>
+<h2>Delete This Stylist</h2>
 <form action="/stylists/<%= @stylist.id() %>" method="post">
   <input name="_method" type="hidden" value="delete">
   <button type="submit">Delete stylist</button>
 </form>
+
+<h2>Add a new client to <%= @stylist.name() %></h2>
+<!-- <form action="/stylists/<%= @stylist.id() %>/" method="post">
+  <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
+  <label for="name">Client Name</label>
+  <input id="name" name="name" type="text">
+  <button type="submit">Add Client</button>
+</form> -->
+
+  <form action="/stylists/<%=@stylist.id() %>" method="post">
+    <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
+    <label for="name">Client Name</label>
+    <input id="name" name="name" type="text">
+    <button type="submit">Add Client</button>
+  </form>
+
+<h1>All of <%= @stylist.name() %>'s clients!</h1>
+<% if @stylist.clients().any?() %>
+  <ul>
+    <% @stylist.clients().each() do |client| %>
+      <li><a href="/clients/<%= client.id() %>"><%= client.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no clients for this stylist!!!!</p>
+<% end %>
+
+<div class="">
+  <a href="/">Back to homepage</a>
+</div>
