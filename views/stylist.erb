@@ -15,13 +15,6 @@
 </form>
 
 <h2>Add a new client to <%= @stylist.name() %></h2>
-<!-- <form action="/stylists/<%= @stylist.id() %>/" method="post">
-  <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
-  <label for="name">Client Name</label>
-  <input id="name" name="name" type="text">
-  <button type="submit">Add Client</button>
-</form> -->
-
   <form action="/stylists/<%=@stylist.id() %>" method="post">
     <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
     <label for="name">Client Name</label>
